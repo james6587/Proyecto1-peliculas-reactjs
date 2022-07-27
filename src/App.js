@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Buscador } from "./Components/Buscador";
 import { Crear } from "./Components/Crear";
 import { Listado } from "./Components/Listado";
 
 function App() {
+
+  const [listadoState, setListadoState] = useState([]);
+
   return (
     <div className="layout">
       {/*cabecera*/}
@@ -24,14 +28,14 @@ function App() {
       {/*contenido principal*/}
       <section id="content" className="content">
         {/*aqui va el listado de peliculas*/}
-        <Listado />
+        <Listado listadoState={listadoState} setListadoState={setListadoState} />
 
       </section>
 
       {/*barra lateral*/}
       <aside className="lateral">
         <Buscador />
-        <Crear />
+        <Crear setListadoState={setListadoState} />
       </aside>
       {/*pie de pagina*/}
       <footer className="footer">&copy; james eliot vargas sandoval</footer>
